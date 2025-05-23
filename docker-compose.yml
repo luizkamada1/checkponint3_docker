@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: dimdim_postgres
+    environment:
+      POSTGRES_DB: dimdimdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - dimdimnet
+
+  app:
+    build: .
+    container_name: dimdim_app
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      POSTGRES_DB: dimdimdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5001:5000"
+    depends_on:
+      - db
+    networks:
+      - dimdimnet
+
+volumes:
+  pgdata:
+
+networks:
+  dimdimnet:
