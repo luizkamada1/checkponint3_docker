@@ -52,7 +52,7 @@ dimdimapp/
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/SEU_USUARIO/dimdimapp.git
+git clone hhttps://github.com/luizkamada1/checkponint3_docker.git
 cd dimdimapp
 ```
 
